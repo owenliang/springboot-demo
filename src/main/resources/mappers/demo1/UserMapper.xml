@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cc.yuerblog.demo.daos.demo1.UserMapper">
+    <insert id="insertUser" useGeneratedKeys="true" keyProperty="id">
+        insert into `user`(`name`) values (#{name})
+    </insert>
+    <resultMap id="userResultMap" type="cc.yuerblog.demo.models.User">
+        <id property="id" column="id" />
+        <result property="name" column="name"/>
+    </resultMap>
+    <select id="findUserByName" resultMap="userResultMap">
+        select * from `user` where `name`=#{name}
+    </select>
+</mapper>

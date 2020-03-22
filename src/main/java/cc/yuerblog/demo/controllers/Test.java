@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.sql.DataSource;
 import java.io.IOException;
 
 @Controller
@@ -18,7 +19,7 @@ public class Test {
     private TestService testService;
 
     // /test/hello-world?name=owenliang
-    @RequestMapping(value="/hello-world", method = {RequestMethod.POST})
+    @RequestMapping(value="/hello-world", method = {RequestMethod.GET})
     public void helloWorld(HttpServletResponse response, HttpServletRequest request, @RequestParam(required = false, name = "who") String name) throws IOException {
         response.getWriter().println(testService.sayHelloWorld(name));
     }
